@@ -299,7 +299,7 @@ namespace Calculator.Utility
 					wholeNumber = Number.Substring(0, decimalPlace);
 					decimalNumber = Number.Substring(decimalPlace + 1);
 
-					if (Convert.ToInt32(decimalNumber) > 0)
+					if (Convert.ToInt64(decimalNumber) > 0)
 					{
 						andStr = "zapeta";
 						decimalString = transform_decimals(decimalNumber);
