@@ -50,6 +50,8 @@
 			this.StringResult = new System.Windows.Forms.TextBox();
 			this.NumericResult = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.LeftBracketButton = new System.Windows.Forms.Button();
+			this.RightBracketButton = new System.Windows.Forms.Button();
 			this.ButtonPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -57,6 +59,8 @@
 			// 
 			this.ButtonPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
 			this.ButtonPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ButtonPanel.Controls.Add(this.RightBracketButton);
+			this.ButtonPanel.Controls.Add(this.LeftBracketButton);
 			this.ButtonPanel.Controls.Add(this.EqualSign);
 			this.ButtonPanel.Controls.Add(this.ButtonC);
 			this.ButtonPanel.Controls.Add(this.Number0);
@@ -79,7 +83,7 @@
 			this.ButtonPanel.Margin = new System.Windows.Forms.Padding(0);
 			this.ButtonPanel.Name = "ButtonPanel";
 			this.ButtonPanel.Padding = new System.Windows.Forms.Padding(1);
-			this.ButtonPanel.Size = new System.Drawing.Size(560, 351);
+			this.ButtonPanel.Size = new System.Drawing.Size(475, 351);
 			this.ButtonPanel.TabIndex = 0;
 			this.ButtonPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
@@ -303,15 +307,15 @@
 			// 
 			// StringResult
 			// 
-			this.StringResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.StringResult.Location = new System.Drawing.Point(22, 26);
+			this.StringResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.StringResult.Location = new System.Drawing.Point(22, 12);
 			this.StringResult.Multiline = true;
 			this.StringResult.Name = "StringResult";
 			this.StringResult.ReadOnly = true;
-			this.StringResult.Size = new System.Drawing.Size(559, 35);
+			this.StringResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.StringResult.Size = new System.Drawing.Size(475, 49);
 			this.StringResult.TabIndex = 1;
 			this.StringResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.StringResult.WordWrap = false;
 			this.StringResult.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// NumericResult
@@ -320,7 +324,7 @@
 			this.NumericResult.Location = new System.Drawing.Point(22, 67);
 			this.NumericResult.Multiline = true;
 			this.NumericResult.Name = "NumericResult";
-			this.NumericResult.Size = new System.Drawing.Size(559, 36);
+			this.NumericResult.Size = new System.Drawing.Size(475, 36);
 			this.NumericResult.TabIndex = 2;
 			this.NumericResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.NumericResult.WordWrap = false;
@@ -338,12 +342,36 @@
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
+			// LeftBracketButton
+			// 
+			this.LeftBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.LeftBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LeftBracketButton.Location = new System.Drawing.Point(359, 45);
+			this.LeftBracketButton.Name = "LeftBracketButton";
+			this.LeftBracketButton.Size = new System.Drawing.Size(60, 60);
+			this.LeftBracketButton.TabIndex = 18;
+			this.LeftBracketButton.Text = "(";
+			this.LeftBracketButton.UseVisualStyleBackColor = false;
+			this.LeftBracketButton.Click += new System.EventHandler(this.LeftBracketButton_Click);
+			// 
+			// RightBracketButton
+			// 
+			this.RightBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.RightBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.RightBracketButton.Location = new System.Drawing.Point(359, 111);
+			this.RightBracketButton.Name = "RightBracketButton";
+			this.RightBracketButton.Size = new System.Drawing.Size(60, 60);
+			this.RightBracketButton.TabIndex = 19;
+			this.RightBracketButton.Text = ")";
+			this.RightBracketButton.UseVisualStyleBackColor = false;
+			this.RightBracketButton.Click += new System.EventHandler(this.RightBracketButton_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.ClientSize = new System.Drawing.Size(603, 512);
+			this.ClientSize = new System.Drawing.Size(519, 512);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.NumericResult);
 			this.Controls.Add(this.StringResult);
@@ -381,6 +409,8 @@
 		private System.Windows.Forms.TextBox StringResult;
 		private System.Windows.Forms.TextBox NumericResult;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button RightBracketButton;
+		private System.Windows.Forms.Button LeftBracketButton;
 	}
 }
 

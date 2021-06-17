@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Calculator.Utility;
+using NCalc;
 
 namespace Calculator
 {
@@ -111,34 +113,63 @@ namespace Calculator
 
 		private void ButtonC_Click(object sender, EventArgs e)
 		{
-			NumericResult.Text = NumericResult.Text.Remove(NumericResult.Text.Length - 1, 1);
+			try { 
+				NumericResult.Text = NumericResult.Text.Remove(NumericResult.Text.Length - 1, 1);
+				StringResult.Text = "";
+			}
+
+			catch (Exception )
+			{
+
+			}
 		}
 
 		private void ButtonCE_Click(object sender, EventArgs e)
 		{
 			NumericResult.Text = "";
+			StringResult.Text = "";
 		}
 		//equal logic
 		//using regular expression to validate input of NumericResult textbox.
 		private void EqualSign_Click(object sender, EventArgs e)
 		{
-			//reg ex for validation of NumericResult
-			Regex rgx = new Regex(@"([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)");
-			DataTable dt = new DataTable();
-		
-
-			if (rgx.IsMatch(NumericResult.Text))
+			try
 			{
-				var v = dt.Compute(NumericResult.Text, "");
-				NumericResult.Text = Convert.ToString(v);
-			}
+				//reg ex for validation of NumericResult
+				Regex rgx = new Regex(@"([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)");
 
-			else label1.Text = "wrong input:expression can only contain numbers,brackets and arthimetic operations.\nexample:-X*(Y+Z)-X/Y";
+				if (rgx.IsMatch(NumericResult.Text))
+				{
+					Expression num = new Expression(NumericResult.Text);
+
+					var v =Convert.ToDouble(num.Evaluate());
+					NumericResult.Text = Convert.ToString(v);
+
+					StringResult.Text = NumberRepresentation.transform_number_toString(Convert.ToString(v));
+				}
+
+				else label1.Text = "wrong input:expression can only contain numbers,brackets,arthimetic operations.\nexample:-X*(Y+Z)-X/Y";
+			}
+			catch (Exception) {
+				
+			
+			
+			}
 		}
 
 		private void label1_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void LeftBracketButton_Click(object sender, EventArgs e)
+		{
+			NumericResult.Text = NumericResult.Text + "(";
+		}
+
+		private void RightBracketButton_Click(object sender, EventArgs e)
+		{
+			NumericResult.Text = NumericResult.Text + ")";
 		}
 	}
 }
