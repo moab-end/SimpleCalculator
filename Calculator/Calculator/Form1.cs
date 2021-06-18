@@ -85,6 +85,7 @@ namespace Calculator
 		{
 
 		}
+	
 		//signs logic
 		private void MultiplicationSign_Click(object sender, EventArgs e)
 		{
@@ -136,16 +137,23 @@ namespace Calculator
 			try
 			{
 				//reg ex for validation of NumericResult
-				Regex rgx = new Regex(@"([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)");
+				
 
-				if (rgx.IsMatch(NumericResult.Text))
+				if (CustomValidation.IsRegExValid(NumericResult.Text))
 				{
-					Expression num = new Expression(NumericResult.Text);
+					if (CustomValidation.IsEven(NumericResult.Text))
+					{
+						Expression num = new Expression(NumericResult.Text);
 
-					var v =Convert.ToDouble(num.Evaluate());
-					NumericResult.Text = Convert.ToString(v);
+						var v = Convert.ToDouble(num.Evaluate());
+						v = Math.Round(v, 4);
+						NumericResult.Text = Convert.ToString(v);
+						
+						StringResult.Text = NumberRepresentation.transform_number_toString(Convert.ToString(v));
+						label1.Text = "";
 
-					StringResult.Text = NumberRepresentation.transform_number_toString(Convert.ToString(v));
+					}
+					else label1.Text = "Number of brackets in expression must be even!";
 				}
 
 				else label1.Text = "wrong input:expression can only contain numbers,brackets,arthimetic operations.\nexample:-X*(Y+Z)-X/Y";
@@ -170,6 +178,16 @@ namespace Calculator
 		private void RightBracketButton_Click(object sender, EventArgs e)
 		{
 			NumericResult.Text = NumericResult.Text + ")";
+		}
+
+		private void sinusButton_Click(object sender, EventArgs e)
+		{
+			NumericResult.Text = NumericResult.Text + "Sin(";
+		}
+
+		private void sqrtButton_Click(object sender, EventArgs e)
+		{
+			NumericResult.Text =   NumericResult.Text + "Sqrt(";
 		}
 	}
 }

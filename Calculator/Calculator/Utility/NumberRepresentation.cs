@@ -306,6 +306,8 @@ namespace Calculator.Utility
 					}
 
 				}
+				else wholeNumber = Number;
+
 				if (wholeNumber.Length > 12) return "Number too big to give string representation!!!";
 
 				value = String.Format("{0} {1} {2} {3} ", isNegative, transform_whole_number(wholeNumber).Trim(), andStr, decimalString);

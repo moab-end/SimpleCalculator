@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.ButtonPanel = new System.Windows.Forms.Panel();
+			this.RightBracketButton = new System.Windows.Forms.Button();
+			this.LeftBracketButton = new System.Windows.Forms.Button();
 			this.EqualSign = new System.Windows.Forms.Button();
 			this.ButtonC = new System.Windows.Forms.Button();
 			this.Number0 = new System.Windows.Forms.Button();
@@ -50,8 +52,8 @@
 			this.StringResult = new System.Windows.Forms.TextBox();
 			this.NumericResult = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.LeftBracketButton = new System.Windows.Forms.Button();
-			this.RightBracketButton = new System.Windows.Forms.Button();
+			this.sinusButton = new System.Windows.Forms.Button();
+			this.sqrtButton = new System.Windows.Forms.Button();
 			this.ButtonPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -59,6 +61,8 @@
 			// 
 			this.ButtonPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
 			this.ButtonPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ButtonPanel.Controls.Add(this.sqrtButton);
+			this.ButtonPanel.Controls.Add(this.sinusButton);
 			this.ButtonPanel.Controls.Add(this.RightBracketButton);
 			this.ButtonPanel.Controls.Add(this.LeftBracketButton);
 			this.ButtonPanel.Controls.Add(this.EqualSign);
@@ -87,11 +91,35 @@
 			this.ButtonPanel.TabIndex = 0;
 			this.ButtonPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
+			// RightBracketButton
+			// 
+			this.RightBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.RightBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.RightBracketButton.Location = new System.Drawing.Point(367, 115);
+			this.RightBracketButton.Name = "RightBracketButton";
+			this.RightBracketButton.Size = new System.Drawing.Size(60, 60);
+			this.RightBracketButton.TabIndex = 19;
+			this.RightBracketButton.Text = ")";
+			this.RightBracketButton.UseVisualStyleBackColor = false;
+			this.RightBracketButton.Click += new System.EventHandler(this.RightBracketButton_Click);
+			// 
+			// LeftBracketButton
+			// 
+			this.LeftBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.LeftBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LeftBracketButton.Location = new System.Drawing.Point(367, 49);
+			this.LeftBracketButton.Name = "LeftBracketButton";
+			this.LeftBracketButton.Size = new System.Drawing.Size(60, 60);
+			this.LeftBracketButton.TabIndex = 18;
+			this.LeftBracketButton.Text = "(";
+			this.LeftBracketButton.UseVisualStyleBackColor = false;
+			this.LeftBracketButton.Click += new System.EventHandler(this.LeftBracketButton_Click);
+			// 
 			// EqualSign
 			// 
 			this.EqualSign.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.EqualSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.EqualSign.Location = new System.Drawing.Point(293, 177);
+			this.EqualSign.Location = new System.Drawing.Point(301, 181);
 			this.EqualSign.Name = "EqualSign";
 			this.EqualSign.Size = new System.Drawing.Size(60, 126);
 			this.EqualSign.TabIndex = 17;
@@ -103,7 +131,7 @@
 			// 
 			this.ButtonC.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.ButtonC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ButtonC.Location = new System.Drawing.Point(293, 111);
+			this.ButtonC.Location = new System.Drawing.Point(301, 115);
 			this.ButtonC.Name = "ButtonC";
 			this.ButtonC.Size = new System.Drawing.Size(60, 60);
 			this.ButtonC.TabIndex = 16;
@@ -115,7 +143,7 @@
 			// 
 			this.Number0.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number0.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number0.Location = new System.Drawing.Point(29, 243);
+			this.Number0.Location = new System.Drawing.Point(37, 247);
 			this.Number0.Name = "Number0";
 			this.Number0.Size = new System.Drawing.Size(126, 60);
 			this.Number0.TabIndex = 15;
@@ -127,7 +155,7 @@
 			// 
 			this.Separator.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Separator.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Separator.Location = new System.Drawing.Point(161, 243);
+			this.Separator.Location = new System.Drawing.Point(169, 247);
 			this.Separator.Name = "Separator";
 			this.Separator.Size = new System.Drawing.Size(60, 60);
 			this.Separator.TabIndex = 14;
@@ -140,7 +168,7 @@
 			// 
 			this.Number2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number2.Location = new System.Drawing.Point(95, 177);
+			this.Number2.Location = new System.Drawing.Point(103, 181);
 			this.Number2.Name = "Number2";
 			this.Number2.Size = new System.Drawing.Size(60, 60);
 			this.Number2.TabIndex = 13;
@@ -152,7 +180,7 @@
 			// 
 			this.Number1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number1.Location = new System.Drawing.Point(29, 177);
+			this.Number1.Location = new System.Drawing.Point(37, 181);
 			this.Number1.Name = "Number1";
 			this.Number1.Size = new System.Drawing.Size(60, 60);
 			this.Number1.TabIndex = 12;
@@ -164,7 +192,7 @@
 			// 
 			this.Number4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number4.Location = new System.Drawing.Point(29, 111);
+			this.Number4.Location = new System.Drawing.Point(37, 115);
 			this.Number4.Name = "Number4";
 			this.Number4.Size = new System.Drawing.Size(60, 60);
 			this.Number4.TabIndex = 11;
@@ -176,7 +204,7 @@
 			// 
 			this.Number5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number5.Location = new System.Drawing.Point(95, 111);
+			this.Number5.Location = new System.Drawing.Point(103, 115);
 			this.Number5.Name = "Number5";
 			this.Number5.Size = new System.Drawing.Size(60, 60);
 			this.Number5.TabIndex = 10;
@@ -188,7 +216,7 @@
 			// 
 			this.Number3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number3.Location = new System.Drawing.Point(161, 177);
+			this.Number3.Location = new System.Drawing.Point(169, 181);
 			this.Number3.Name = "Number3";
 			this.Number3.Size = new System.Drawing.Size(60, 60);
 			this.Number3.TabIndex = 9;
@@ -200,7 +228,7 @@
 			// 
 			this.Number6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number6.Location = new System.Drawing.Point(161, 111);
+			this.Number6.Location = new System.Drawing.Point(169, 115);
 			this.Number6.Name = "Number6";
 			this.Number6.Size = new System.Drawing.Size(60, 60);
 			this.Number6.TabIndex = 8;
@@ -212,7 +240,7 @@
 			// 
 			this.PlusSign.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.PlusSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.PlusSign.Location = new System.Drawing.Point(227, 243);
+			this.PlusSign.Location = new System.Drawing.Point(235, 247);
 			this.PlusSign.Name = "PlusSign";
 			this.PlusSign.Size = new System.Drawing.Size(60, 60);
 			this.PlusSign.TabIndex = 7;
@@ -224,7 +252,7 @@
 			// 
 			this.MinusSign.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.MinusSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.MinusSign.Location = new System.Drawing.Point(227, 177);
+			this.MinusSign.Location = new System.Drawing.Point(235, 181);
 			this.MinusSign.Name = "MinusSign";
 			this.MinusSign.Size = new System.Drawing.Size(60, 60);
 			this.MinusSign.TabIndex = 6;
@@ -236,7 +264,7 @@
 			// 
 			this.DivideSign.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.DivideSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.DivideSign.Location = new System.Drawing.Point(227, 111);
+			this.DivideSign.Location = new System.Drawing.Point(235, 115);
 			this.DivideSign.Name = "DivideSign";
 			this.DivideSign.Size = new System.Drawing.Size(60, 60);
 			this.DivideSign.TabIndex = 5;
@@ -248,7 +276,7 @@
 			// 
 			this.ButtonCE.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.ButtonCE.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ButtonCE.Location = new System.Drawing.Point(293, 45);
+			this.ButtonCE.Location = new System.Drawing.Point(301, 49);
 			this.ButtonCE.Name = "ButtonCE";
 			this.ButtonCE.Size = new System.Drawing.Size(60, 60);
 			this.ButtonCE.TabIndex = 4;
@@ -260,7 +288,7 @@
 			// 
 			this.MultiplicationSign.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.MultiplicationSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.MultiplicationSign.Location = new System.Drawing.Point(227, 45);
+			this.MultiplicationSign.Location = new System.Drawing.Point(235, 49);
 			this.MultiplicationSign.Name = "MultiplicationSign";
 			this.MultiplicationSign.Size = new System.Drawing.Size(60, 60);
 			this.MultiplicationSign.TabIndex = 3;
@@ -273,7 +301,7 @@
 			// 
 			this.Number9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number9.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number9.Location = new System.Drawing.Point(161, 45);
+			this.Number9.Location = new System.Drawing.Point(169, 49);
 			this.Number9.Name = "Number9";
 			this.Number9.Size = new System.Drawing.Size(60, 60);
 			this.Number9.TabIndex = 2;
@@ -285,7 +313,7 @@
 			// 
 			this.Number8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number8.Location = new System.Drawing.Point(95, 45);
+			this.Number8.Location = new System.Drawing.Point(103, 49);
 			this.Number8.Name = "Number8";
 			this.Number8.Size = new System.Drawing.Size(60, 60);
 			this.Number8.TabIndex = 1;
@@ -297,7 +325,7 @@
 			// 
 			this.Number7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.Number7.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Number7.Location = new System.Drawing.Point(29, 45);
+			this.Number7.Location = new System.Drawing.Point(37, 49);
 			this.Number7.Name = "Number7";
 			this.Number7.Size = new System.Drawing.Size(60, 60);
 			this.Number7.TabIndex = 0;
@@ -342,29 +370,29 @@
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
-			// LeftBracketButton
+			// sinusButton
 			// 
-			this.LeftBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.LeftBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LeftBracketButton.Location = new System.Drawing.Point(359, 45);
-			this.LeftBracketButton.Name = "LeftBracketButton";
-			this.LeftBracketButton.Size = new System.Drawing.Size(60, 60);
-			this.LeftBracketButton.TabIndex = 18;
-			this.LeftBracketButton.Text = "(";
-			this.LeftBracketButton.UseVisualStyleBackColor = false;
-			this.LeftBracketButton.Click += new System.EventHandler(this.LeftBracketButton_Click);
+			this.sinusButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.sinusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.sinusButton.Location = new System.Drawing.Point(367, 181);
+			this.sinusButton.Name = "sinusButton";
+			this.sinusButton.Size = new System.Drawing.Size(60, 60);
+			this.sinusButton.TabIndex = 20;
+			this.sinusButton.Text = "sin";
+			this.sinusButton.UseVisualStyleBackColor = false;
+			this.sinusButton.Click += new System.EventHandler(this.sinusButton_Click);
 			// 
-			// RightBracketButton
+			// sqrtButton
 			// 
-			this.RightBracketButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.RightBracketButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.RightBracketButton.Location = new System.Drawing.Point(359, 111);
-			this.RightBracketButton.Name = "RightBracketButton";
-			this.RightBracketButton.Size = new System.Drawing.Size(60, 60);
-			this.RightBracketButton.TabIndex = 19;
-			this.RightBracketButton.Text = ")";
-			this.RightBracketButton.UseVisualStyleBackColor = false;
-			this.RightBracketButton.Click += new System.EventHandler(this.RightBracketButton_Click);
+			this.sqrtButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.sqrtButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.sqrtButton.Location = new System.Drawing.Point(367, 247);
+			this.sqrtButton.Name = "sqrtButton";
+			this.sqrtButton.Size = new System.Drawing.Size(60, 60);
+			this.sqrtButton.TabIndex = 21;
+			this.sqrtButton.Text = "sqrt";
+			this.sqrtButton.UseVisualStyleBackColor = false;
+			this.sqrtButton.Click += new System.EventHandler(this.sqrtButton_Click);
 			// 
 			// MainWindow
 			// 
@@ -411,6 +439,8 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button RightBracketButton;
 		private System.Windows.Forms.Button LeftBracketButton;
+		private System.Windows.Forms.Button sqrtButton;
+		private System.Windows.Forms.Button sinusButton;
 	}
 }
 
