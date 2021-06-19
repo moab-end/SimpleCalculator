@@ -9,7 +9,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Calculator.Utility;
-using NCalc;
+
+using org.mariuszgromada.math.mxparser;
 
 namespace Calculator
 {
@@ -143,13 +144,11 @@ namespace Calculator
 				{
 					if (CustomValidation.IsEven(NumericResult.Text))
 					{
-						Expression num = new Expression(NumericResult.Text);
-
-						var v = Convert.ToDouble(num.Evaluate());
-						v = Math.Round(v, 4);
-						NumericResult.Text = Convert.ToString(v);
 						
-						StringResult.Text = NumberRepresentation.transform_number_toString(Convert.ToString(v));
+						Expression v = new Expression(NumericResult.Text);
+						string math = Convert.ToString(Math.Round(v.calculate(),4));
+						NumericResult.Text = math;
+						StringResult.Text = NumberRepresentation.transform_number_toString(math);
 						label1.Text = "";
 
 					}
@@ -182,12 +181,12 @@ namespace Calculator
 
 		private void sinusButton_Click(object sender, EventArgs e)
 		{
-			NumericResult.Text = NumericResult.Text + "Sin(";
+			NumericResult.Text = NumericResult.Text + "sin(";
 		}
 
 		private void sqrtButton_Click(object sender, EventArgs e)
 		{
-			NumericResult.Text =   NumericResult.Text + "Sqrt(";
+			NumericResult.Text =   NumericResult.Text + "sqrt(";
 		}
 	}
 }

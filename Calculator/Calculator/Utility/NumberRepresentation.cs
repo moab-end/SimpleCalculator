@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Calculator.Utility
 {
 	 class NumberRepresentation
@@ -216,7 +217,7 @@ namespace Calculator.Utility
 						case 11:
 						case 12:
 							position = (numberOfDigits % 10) + 1;
-							place = "Milijarda";
+							place = "Milijardi";
 							break;
 
 						default:
@@ -299,7 +300,7 @@ namespace Calculator.Utility
 					wholeNumber = Number.Substring(0, decimalPlace);
 					decimalNumber = Number.Substring(decimalPlace + 1);
 
-					if (Convert.ToInt64(decimalNumber) > 0)
+					if (Convert.ToDouble(decimalNumber) > 0)
 					{
 						andStr = "zapeta";
 						decimalString = transform_decimals(decimalNumber);
@@ -310,12 +311,91 @@ namespace Calculator.Utility
 
 				if (wholeNumber.Length > 12) return "Number too big to give string representation!!!";
 
-				value = String.Format("{0} {1} {2} {3} ", isNegative, transform_whole_number(wholeNumber).Trim(), andStr, decimalString);
+
+				value = String.Format("{0} {1} {2} {3} ", isNegative,grammatically_correct(remove_places(transform_whole_number(wholeNumber).Trim())), andStr, decimalString);
 
 			}
 			catch (Exception e) { }
 
 			return value;
+		}
+		private static string grammatically_correct(string Number)
+		{
+			string[] array = Number.Split(' ');
+
+			for(int i = 1; i < array.Length; i++)
+			{
+				if (array[i] == "Hiljada") {
+					if (array[i - 1] == "Jedan")
+						array[i - 1] = "Jedna";
+					else if (array[i - 1] == "Dva")
+					{
+						array[i] = "Hiljade";
+						array[i - 1] = "Dve";
+					}
+					else if (array[i - 1] == "Tri" || array[i - 1] == "Cetiri") 
+					{
+						array[i] = "Hiljade";
+					}
+
+				}
+				if (array[i] == "Miliona") {
+					if (array[i - 1] == "Jedan") array[i] = "Milion";
+				}
+				if (array[i] == "Milijardi"){
+					if (array[i - 1] == "Jedan") {
+						array[i] = "Milijarda";
+						array[i-1] = "Jedna";
+					}
+					else if(array[i - 1] == "Dva")
+					{
+						array[i - 1] = "Dve";
+						array[i] = "Milijarde";
+					}
+					else if(array[i - 1] == "Tri" || array[i - 1] == "Cetiri")
+					{
+						array[i] = "Milijarde";
+					}
+
+				}
+
+
+			}
+
+			return string.Join(" ", array);
+		}
+
+		private static string remove_places(string Number)
+		{
+			string[] array = Number.Split(' ');
+
+			for(int i = 0; i < array.Length; i++)
+			{
+				//7 milijardi miliona hiljada jedan
+				if(array[i]=="Milijardi" && array[i+1] == "Miliona" && array[i+2] == "Hiljada")
+				{
+					array[i + 1] = "";
+					array[i + 2] = "";
+				}
+				//7 milijardi miliona trista pedeset hiljada jedan
+				if (array[i] == "Milijardi" && array[i + 1] == "Miliona")
+				{
+					array[i + 1] = "";
+				}
+				//7 miliona hiljada jedan
+				if (array[i] == "Miliona" && array[i + 1] == "Hiljada")
+				{
+					array[i + 1] = "";
+				}
+
+				if (i + 2 >= array.Length - 1) break;
+
+
+			}
+
+			return string.Join(" ",array);
+
+			
 		}
 	}
 }
